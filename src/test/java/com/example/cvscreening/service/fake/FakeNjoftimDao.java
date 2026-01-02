@@ -44,4 +44,13 @@ public class FakeNjoftimDao implements NjoftimDao {
         c.setStatusiLeximit(n.getStatusiLeximit());
         return c;
     }
+
+    @Override
+    public boolean markAsRead(int idNjoftim) {
+        Njoftim n = byId.get(idNjoftim);
+        if (n == null) return false;
+        n.setStatusiLeximit("LEXUAR");
+        return true;
+    }
+
 }
