@@ -2,11 +2,11 @@
 # CV Screening System for HR
 
 ## Overview
-This project implements a **CV Screening System for Human Resources** using Java and Maven.
+This project implements a CV Screening System for Human Resources using Java and Maven.
 The system supports candidate registration, job applications, automated CV screening,
 interview management, notifications, and reporting.
 
-The application follows a **layered architecture** and uses an **H2 in-memory database**
+The application follows a layered architecture and uses an H2 in-memory database
 for persistence.
 
 ---
@@ -59,7 +59,7 @@ The system is organized into the following layers:
 ---
 
 ## CV Screening Logic
-The screening process calculates a **matching score** based on:
+The screening process calculates a matching score based on:
 - Required job keywords
 - Candidate skills and experience
 
