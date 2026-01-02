@@ -11,4 +11,6 @@ public interface CvDao {
     Optional<Cv> findById(int idCv);
 
     List<Cv> findByKandidatId(int idKandidat);
+    boolean updateMatchScore(int idCv, double score);
+
 }

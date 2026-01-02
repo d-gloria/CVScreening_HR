@@ -46,4 +46,12 @@ public class FakeCvDao implements CvDao {
         c.setPerputhshmeriaMePozicionin(cv.getPerputhshmeriaMePozicionin());
         return c;
     }
+    @Override
+    public boolean updateMatchScore(int idCv, double score) {
+        Cv cv = byId.get(idCv);
+        if (cv == null) return false;
+        cv.setPerputhshmeriaMePozicionin(score);
+        return true;
+    }
+
 }

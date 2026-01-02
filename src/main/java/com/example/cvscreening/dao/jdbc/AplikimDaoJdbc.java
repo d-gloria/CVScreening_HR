@@ -120,4 +120,17 @@ public class AplikimDaoJdbc implements AplikimDao {
             throw new RuntimeException("Update aplikim status/comment failed", e);
         }
     }
+
+    @Override
+    public boolean updateScore(int idAplikimi, double score) {
+        String sql = "UPDATE aplikim SET vleresimi = ? WHERE id_aplikimi = ?";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setDouble(1, score);
+            ps.setInt(2, idAplikimi);
+            return ps.executeUpdate() == 1;
+        } catch (SQLException e) {
+            throw new RuntimeException("Update aplikim score failed", e);
+        }
+    }
+
 }

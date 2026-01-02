@@ -65,4 +65,13 @@ public class FakeAplikimDao implements AplikimDao {
         c.setKomentetRekrutuesit(a.getKomentetRekrutuesit());
         return c;
     }
+
+    @Override
+    public boolean updateScore(int idAplikimi, double score) {
+        Aplikim a = byId.get(idAplikimi);
+        if (a == null) return false;
+        a.setVleresimi(score);
+        return true;
+    }
+
 }

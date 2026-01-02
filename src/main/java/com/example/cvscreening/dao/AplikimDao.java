@@ -16,4 +16,6 @@ public interface AplikimDao {
 
     boolean updateStatusAndComment(int idAplikimi, String gjendja, String komentetRekrutuesit);
 
+    boolean updateScore(int idAplikimi, double score);
+
 }

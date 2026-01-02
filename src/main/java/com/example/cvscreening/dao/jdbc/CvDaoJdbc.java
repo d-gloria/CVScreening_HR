@@ -97,4 +97,17 @@ public class CvDaoJdbc implements CvDao {
 
         return cv;
     }
+
+    @Override
+    public boolean updateMatchScore(int idCv, double score) {
+        String sql = "UPDATE cv SET perputhshmeria_me_pozicionin = ? WHERE id_cv = ?";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setDouble(1, score);
+            ps.setInt(2, idCv);
+            return ps.executeUpdate() == 1;
+        } catch (SQLException e) {
+            throw new RuntimeException("Update cv match score failed", e);
+        }
+    }
+
 }
