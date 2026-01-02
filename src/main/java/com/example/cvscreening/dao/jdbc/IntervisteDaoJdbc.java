@@ -94,4 +94,22 @@ public class IntervisteDaoJdbc implements IntervisteDao {
         i.setRezultati(rs.getString("rezultati"));
         return i;
     }
+    @Override
+    public boolean updateRezultat(int idInterviste, String rezultat, Integer vleresimRekrutuesit, String pershtypja) {
+        String sql = "UPDATE interviste SET rezultati = ?, vleresimi_rekrutuesit = ?, pershtypja = ? WHERE id_interviste = ?";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, rezultat);
+
+            if (vleresimRekrutuesit == null) ps.setNull(2, Types.INTEGER);
+            else ps.setInt(2, vleresimRekrutuesit);
+
+            ps.setString(3, pershtypja);
+            ps.setInt(4, idInterviste);
+
+            return ps.executeUpdate() == 1;
+        } catch (SQLException e) {
+            throw new RuntimeException("Update interviste rezultat failed", e);
+        }
+    }
+
 }
