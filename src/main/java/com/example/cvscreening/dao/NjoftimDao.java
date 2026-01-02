@@ -9,4 +9,6 @@ public interface NjoftimDao {
     int create(Njoftim n);
     Optional<Njoftim> findById(int idNjoftim);
     List<Njoftim> findByPerdoruesId(int idPerdorues);
+    boolean markAsRead(int idNjoftim);
+
 }
