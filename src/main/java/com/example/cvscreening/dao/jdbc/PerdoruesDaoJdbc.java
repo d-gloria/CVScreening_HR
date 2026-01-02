@@ -55,20 +55,6 @@ public class PerdoruesDaoJdbc implements PerdoruesDao {
         }
     }
 
-    @Override
-    public Optional<Perdorues> findByEmail(String email) {
-        String sql = "SELECT * FROM perdorues WHERE adresa_email = ?";
-        try (PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, email);
-            try (ResultSet rs = ps.executeQuery()) {
-                if (!rs.next()) return Optional.empty();
-                return Optional.of(map(rs));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Find by email failed", e);
-        }
-    }
-
     private Perdorues map(ResultSet rs) throws SQLException {
         Perdorues p = new Perdorues();
         p.setIdPerdorues(rs.getInt("id_perdorues"));
@@ -82,5 +68,31 @@ public class PerdoruesDaoJdbc implements PerdoruesDao {
         Date d = rs.getDate("data_regjistrimit");
         if (d != null) p.setDataRegjistrimit(d.toLocalDate());
         return p;
+    }
+
+    @Override
+    public Optional<Perdorues> findByEmail(String email) {
+        String sql = "SELECT * FROM perdorues WHERE adresa_email = ?";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, email);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (!rs.next()) return Optional.empty();
+                return Optional.of(map(rs));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Find perdorues by email failed", e);
+        }
+    }
+
+    @Override
+    public boolean updatePassword(int idPerdorues, String newPassword) {
+        String sql = "UPDATE perdorues SET fjalekalimi = ? WHERE id_perdorues = ?";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, newPassword);
+            ps.setInt(2, idPerdorues);
+            return ps.executeUpdate() == 1;
+        } catch (SQLException e) {
+            throw new RuntimeException("Update password failed", e);
+        }
     }
 }
