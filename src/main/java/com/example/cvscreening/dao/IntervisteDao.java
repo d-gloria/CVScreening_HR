@@ -11,4 +11,6 @@ public interface IntervisteDao {
     Optional<Interviste> findById(int idInterviste);
 
     List<Interviste> findByAplikimId(int idAplikimi);
+
+    boolean updateRezultat(int idInterviste, String rezultat, Integer vleresimRekrutuesit, String pershtypja);
 }
