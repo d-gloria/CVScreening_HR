@@ -108,4 +108,16 @@ public class AplikimDaoJdbc implements AplikimDao {
         a.setKomentetRekrutuesit(rs.getString("komentet_rekrutuesit"));
         return a;
     }
+    @Override
+    public boolean updateStatusAndComment(int idAplikimi, String gjendja, String komentetRekrutuesit) {
+        String sql = "UPDATE aplikim SET gjendja = ?, komentet_rekrutuesit = ? WHERE id_aplikimi = ?";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, gjendja);
+            ps.setString(2, komentetRekrutuesit);
+            ps.setInt(3, idAplikimi);
+            return ps.executeUpdate() == 1;
+        } catch (SQLException e) {
+            throw new RuntimeException("Update aplikim status/comment failed", e);
+        }
+    }
 }

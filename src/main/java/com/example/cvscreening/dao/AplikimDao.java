@@ -13,4 +13,7 @@ public interface AplikimDao {
     List<Aplikim> findByKandidatId(int idKandidat);
 
     List<Aplikim> findByPozicionId(int idPozicion);
+
+    boolean updateStatusAndComment(int idAplikimi, String gjendja, String komentetRekrutuesit);
+
 }

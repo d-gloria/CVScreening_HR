@@ -8,4 +8,6 @@ public interface PerdoruesDao {
     int create(Perdorues p);
     Optional<Perdorues> findById(int id);
     Optional<Perdorues> findByEmail(String email);
+    boolean updatePassword(int idPerdorues, String newPassword);
+
 }
