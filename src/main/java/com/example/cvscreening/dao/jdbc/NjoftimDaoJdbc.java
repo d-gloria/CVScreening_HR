@@ -84,4 +84,16 @@ public class NjoftimDaoJdbc implements NjoftimDao {
         n.setStatusiLeximit(rs.getString("statusi_leximit"));
         return n;
     }
+    @Override
+    public boolean markAsRead(int idNjoftim) {
+        String sql = "UPDATE njoftim SET statusi_leximit = ? WHERE id_njoftim = ?";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, "LEXUAR");
+            ps.setInt(2, idNjoftim);
+            return ps.executeUpdate() == 1;
+        } catch (SQLException e) {
+            throw new RuntimeException("Mark njoftim as read failed", e);
+        }
+    }
+
 }
