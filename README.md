@@ -1,6 +1,8 @@
 # CVScreening_HR
 # CV Screening System for HR
 
+**Figma link for the frontend prototype: https://www.figma.com/community/file/1589927228131833281
+**
 ## Overview
 This project implements a CV Screening System for Human Resources using Java and Maven.
 The system supports candidate registration, job applications, automated CV screening,
