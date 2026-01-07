@@ -1,3 +1,13 @@
+DROP TABLE IF EXISTS regjister_auditi;
+DROP TABLE IF EXISTS raport;
+DROP TABLE IF EXISTS njoftim;
+DROP TABLE IF EXISTS interviste;
+DROP TABLE IF EXISTS aplikim;
+DROP TABLE IF EXISTS pozicion_pune;
+DROP TABLE IF EXISTS cv;
+DROP TABLE IF EXISTS kandidat;
+DROP TABLE IF EXISTS perdorues;
+
 CREATE TABLE perdorues (
   id_perdorues INT AUTO_INCREMENT PRIMARY KEY,
   emri VARCHAR(100),
@@ -8,6 +18,7 @@ CREATE TABLE perdorues (
   data_regjistrimit DATE,
   gjendja VARCHAR(30)
 );
+
 CREATE TABLE kandidat (
   id_kandidat INT AUTO_INCREMENT PRIMARY KEY,
   id_perdorues INT UNIQUE,
